@@ -146,11 +146,15 @@ export default function JoinGuild() {
     };
 
     try {
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_qe08p94";
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_9dytoec";
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "jOE1wRzsvdhEyd7WT";
+
       const response = await emailjs.send(
-        "service_qe08p94",
-        "template_9dytoec",
+        serviceId,
+        templateId,
         templateParams,
-        "jOE1wRzsvdhEyd7WT"
+        publicKey
       );
 
       if (response.status === 200) {
